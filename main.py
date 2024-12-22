@@ -1,7 +1,8 @@
 from scanner.dns_enum import dns_enum
 from scanner.port_scan import port_scan
+from scanner.traceroute import traceroute
 
-print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n1. Scan Ports \n2. Enumerate DNS Records")
+print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n1. Scan Ports \n2. Enumerate DNS Records \n3. Traceroute")
 option = input("Enter option: ")
 
 match option:
@@ -22,4 +23,8 @@ match option:
             else:
                 print("No records found.")
             print("-" * 30)
+    case "3":
+        target = input("Enter target IP address or Domain name to traceroute: ")
+
+        traceroute(target)
 
