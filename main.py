@@ -1,8 +1,11 @@
 from scanner.dns_enum import dns_enum
 from scanner.port_scan import port_scan
 from scanner.traceroute import traceroute
+from scanner.get_ip_address import get_ip_address
+from scanner.get_domain import get_domain_name
+from scanner.who_is import get_whois_info
 
-print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n1. Scan Ports \n2. Enumerate DNS Records \n3. Traceroute")
+print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n1. Scan Ports \n2. Enumerate DNS Records \n3. Traceroute \n4. Get IP Address of Domain \n5. Get Domain of IP Address \n6. Get Whois Information \n ---> Press /q to quit")
 option = input("Enter option: ")
 
 match option:
@@ -14,7 +17,6 @@ match option:
         domain = input("Enter domain name: ")
         result = dns_enum(domain)
         
-        # Pretty-print the result
         for record_type, values in result.items():
             print(f"--- {record_type} Records ---")
             if values:
@@ -23,8 +25,20 @@ match option:
             else:
                 print("No records found.")
             print("-" * 30)
+    
     case "3":
         target = input("Enter target IP address or Domain name to traceroute: ")
-
         traceroute(target)
+    case "4":
+        domain = input("Enter domain name: ")
+        ip_address = get_ip_address(domain)
+        print(f"IP address: {ip_address}")
+    case "5":
+        ip_address = input("Enter IP address: ")
+        domain = get_domain_name(ip_address)
+        print(f"Domain name: {domain}")
+    case "6":
+        domain = input("Enter domain name: ")
+        whois_info = get_whois_info(domain)
+        print(whois_info)
 
