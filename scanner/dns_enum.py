@@ -11,7 +11,7 @@ def dns_enum(domain):
         try:
             records[record_type] = [str(r) for r in dns.resolver.resolve(domain, record_type)]
         except Exception as e:
-            records[record_type] = []  # No records or query failed
+            records[record_type] = [] 
 
     return records
 
