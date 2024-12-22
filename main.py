@@ -5,6 +5,7 @@ from scanner.get_ip_address import get_ip_address
 from scanner.get_domain import get_domain_name
 from scanner.who_is import get_whois_info
 from scanner.os_detection import os_fingerprinting
+from scanner.firewall_detection import firewall_detection
 
 print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n1. Scan Ports \n2. Enumerate DNS Records \n3. Traceroute \n4. Get IP Address of Domain \n5. Get Domain of IP Address \n6. Get Whois Information \n7. O/S Detection \n8. Firewall/Filter Detection \n ---> Press /q to quit")
 option = input("Enter option: ")
@@ -45,4 +46,7 @@ match option:
     case "7":
         target = input("Enter target IP address or Domain for O/S detection: ")
         os_fingerprinting(target)
+    case "8":
+        target = input("Enter target IP address or Domain for firewall detection: ")
+        firewall_detection(target)
 
