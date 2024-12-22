@@ -1,10 +1,14 @@
 from scanner.dns_enum import dns_enum
+from scanner.port_scan import port_scan
 
-print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n 1. Enumerate DNS Records")
+print("PRESS CORRESPONDING NUMBER TO SELECT OPTION \n1. Scan Ports \n2. Enumerate DNS Records")
 option = input("Enter option: ")
 
 match option:
     case "1":
+        port_scan()
+
+    case "2":
         print("PLEASE ENTER DOMAIN NAME TO ENUMERATE DNS RECORDS")
         domain = input("Enter domain name: ")
         result = dns_enum(domain)
